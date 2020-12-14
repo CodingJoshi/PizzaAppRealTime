@@ -5,6 +5,8 @@ const path=require('path')
 const ejs=require('ejs');
 const expressLayout=require('express-ejs-layouts');
 
+// assests 
+app.use(express.static(__dirname+'/public'));
 
 app.get('/',(req,res)=>{
     res.render('home');
