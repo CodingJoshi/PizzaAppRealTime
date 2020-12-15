@@ -36,8 +36,6 @@ app.use(session({
     store:mongoStore,
     saveUninitialised: false,
     cookie:{maxAge: 1000*60*60*24} //24hr
-    // cookie:{maxAge: 1000*5} // 5sec
-    
 }))
 
 app.use(flash())
@@ -47,6 +45,13 @@ app.use(flash())
 // assests 
 app.use(express.static(__dirname+'/public'));
 
+app.use(express.json())
+
+//global middleware
+app.use((req,res,next)=>{
+    res.locals.session=req.session;
+    next();
+})
 
 
 // set ejs.Template engine

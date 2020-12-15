@@ -9,16 +9,17 @@ function initRoutes(app){
     //     res.render('home');
     // })
     
-    app.get('/cart',cartController().index)
-
+    
     app.get('/login',authController().login)
-
+    
     app.get('/register',authController().register)
     
     app.post('/register',(req,res)=>{
         // conplete logic => should be move to controllers
     })
     
+    app.get('/cart',cartController().index)
+    app.post('/update-cart',cartController().update)
 
 }
 
