@@ -34,7 +34,7 @@ app.use(session({
     secret: process.env.COOKIE_SECRET,
     resave: false,
     store:mongoStore,
-    saveUninitialised: false,
+    saveUninitialized:false,
     cookie:{maxAge: 1000*60*60*24} //24hr
 }))
 
@@ -44,7 +44,7 @@ app.use(flash())
 
 // assests 
 app.use(express.static(__dirname+'/public'));
-
+app.use(express.urlencoded({extended:true}));
 app.use(express.json())
 
 //global middleware
