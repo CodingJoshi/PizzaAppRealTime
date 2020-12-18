@@ -10,6 +10,7 @@ const mongoose=require('mongoose');
 const session=require('express-session');
 const flash=require('express-flash');
 const MongoDbStore=require('connect-mongo')(session);
+const passport=require('passport');
 
 //Database connection
 const url='mongodb://localhost/pizza';
@@ -22,6 +23,12 @@ connection.once('open',()=>{
     console.log('Connection Failed.. ')
 });
 
+
+// passport Config 
+const passportInit=require('./app/config/passport');
+passportInit(passport);
+app.use(passport.initialize())
+app.use(passport.session())
 
 //Session store
 let mongoStore = new MongoDbStore({
