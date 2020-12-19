@@ -24,11 +24,6 @@ connection.once('open',()=>{
 });
 
 
-// passport Config 
-const passportInit=require('./app/config/passport');
-passportInit(passport);
-app.use(passport.initialize())
-app.use(passport.session())
 
 //Session store
 let mongoStore = new MongoDbStore({
@@ -47,6 +42,11 @@ app.use(session({
 
 app.use(flash())
 
+// passport Config 
+const passportInit=require('./app/config/passport');
+passportInit(passport);
+app.use(passport.initialize())
+app.use(passport.session())
 
 
 // assests 
@@ -57,6 +57,7 @@ app.use(express.json())
 //global middleware
 app.use((req,res,next)=>{
     res.locals.session=req.session;
+    res.locals.user=req.user;
     next();
 })
 

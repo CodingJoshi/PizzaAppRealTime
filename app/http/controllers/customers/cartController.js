@@ -24,14 +24,14 @@ function cartController(){
             }
             let cart=req.session.cart;
             // Check if item doesn't exist in cart
-            console.log(req.body);
+            // console.log(req.body);
             if(!cart.items[req.body._id]){
                 cart.items[req.body._id]={
                     item:req.body,
                     qty:0
                 }
             }
-            console.log(cart.items);
+            // console.log(cart.items);
             cart.items[req.body._id].qty=cart.items[req.body._id].qty+1
             cart.totalQty=cart.totalQty+1;
             cart.totalPrice=cart.totalPrice + parseInt(req.body.price);

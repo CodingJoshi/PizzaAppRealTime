@@ -1,8 +1,8 @@
 import axios from 'axios'
 import Noty from 'noty'
+import { initAdmin } from './admin'
 let addToCart = document.querySelectorAll('.add-to-cart');
 let cartCounter=document.querySelector('#cartCounter');
-
 function updateCart(pizza){
     //Ajax call ->> axios
     axios.post('/update-cart',pizza).then(res=>{
@@ -34,3 +34,11 @@ addToCart.forEach((btn)=>{
     })
 
 })
+const alertMsg=document.querySelector('#sucess-alert');
+if(alertMsg){
+    setTimeout(()=>{
+        alertMsg.remove();
+    },2000);
+}
+
+initAdmin()
