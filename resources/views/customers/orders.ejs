@@ -21,7 +21,7 @@
                     <%order.forEach((ord)=>{%>
                         <tr>
                             <td class="border px-4 py-2">
-                                <a class="link" href="/"> <%=ord._id%> </a>
+                                <a class="link" href="/customer/orders/<%=ord._id%>"> <%=ord._id%> </a>
                             </td>
                             <td class="border px-4 py-2">
                                 <%=ord.address %> 
@@ -30,7 +30,7 @@
                                 <%=ord.phone%> 
                             </td>
                             <td class="border px-4 py-2">
-                                <%=moment(ord.createdAt).format('hh:mm A')%>
+                                <%=moment(ord.createdAt).format('hh:mm A , DD/MM/YYYY')%>
                             </td>
                         </tr>
                     <%})%>
